@@ -1,0 +1,30 @@
+<!-- <nb-card style="background:rgba(179, 224, 255,0.2)"> -->
+<nb-card >
+<nb-card-header>To Do</nb-card-header>
+<nb-card-body>
+	<div class="input-group input-group-border-only">
+	  <input type="text" id="txtToDo" class="form-control" placeholder="Task to do.." (keyup)="addToDoItem($event)" ng-model="newTodoText">
+	  <span class="input-group-append">
+		<button class="btn input-with-button input-group-text" (click)="addToDoItem('',true)">
+		  <i class="ion-plus-round"></i>
+		</button>
+	  </span>
+	</div>
+<div class="task-todo-container" ng-class="{'transparent': transparent}">
+	  <div class="box-shadow-border"></div>
+      <ul class="todo-list" ui-sortable ng-model="todoList" >
+        <li *ngFor="let item of todoList" ng-if="!item.deleted" ng-init="activeItem=false"
+        ng-class="{checked: isChecked, active: activeItem}"
+        ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+	  <div class="blur-container"><div class="blur-box"></div></div>
+		<!-- <i class="mark" style="background-color: {{::item.color}}"></i> -->
+      <label class="todo-checkbox custom-checkbox custom-input-success">
+        <input type="checkbox" ng-model="isChecked">
+        <span class="cut-with-dots">{{ item.text }}</span>
+      </label>
+		<i class="remove-todo ion-ios-close-empty" (click)="remove(item)"></i>
+		</li>
+      </ul>
+</div>
+</nb-card-body>
+</nb-card>

@@ -1,0 +1,23 @@
+<!-- <nb-card style="background:rgba(179, 224, 255,0.2)"> -->
+<nb-card >
+<nb-card-header>Favorites</nb-card-header>
+<nb-card-body>
+<div class="task-todo-container" ng-class="{'transparent': transparent}">
+	  <div class="box-shadow-border"></div>
+      <ul class="todo-list" ui-sortable ng-model="favorites" >
+        <li *ngFor="let item of favorites" ng-if="!item.deleted" ng-init="activeItem=false"
+        ng-class="{checked: isChecked, active: activeItem}"
+        ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+	  <div class="blur-container"><div class="blur-box"></div></div>
+		<!-- <i class="mark" style=""></i> -->
+      <label class="todo-checkbox custom-checkbox custom-input-success">
+        <input type="checkbox" ng-model="isChecked">
+        <span class="cut-with-dots">{{ item.text }}</span>
+      </label>
+		<i class="remove-todo ion-ios-close-empty" ng-click="item.deleted = true"></i>
+		</li>
+        <!-- <i class="i-contact nb-phone"></i> -->
+      </ul>
+</div>
+</nb-card-body>
+</nb-card>
